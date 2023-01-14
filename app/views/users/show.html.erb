@@ -9,6 +9,14 @@
   <% end %>
 </ul>
 
+<h2><%= @user.username %> will be attending</h2>
+
+<ul>
+  <% @user.attended_events.each do |attended_event| %>
+    <li><%= attended_event.location %></li>
+  <% end %>
+</ul>
+
 <div>
   <%= button_to 'Create event', new_event_path, method: :get %>
 </div>
