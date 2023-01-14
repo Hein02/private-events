@@ -3,3 +3,13 @@
 <% flash.each do |name, message| %>
   <p><%= message %></p>
 <% end %>
+
+<h2>Attendees</h2>
+
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.email %></li>
+  <% end %>
+</ul>
+
+<%= button_to 'Attend', event_attendings_path(event_id: @event.id), method: :post %>
