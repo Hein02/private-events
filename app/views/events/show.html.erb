@@ -1,9 +1,5 @@
 <h1>Event details</h1>
 
-<% flash.each do |name, message| %>
-  <p><%= message %></p>
-<% end %>
-
 <h2>Attendees</h2>
 
 <ul>
@@ -12,4 +8,6 @@
   <% end %>
 </ul>
 
-<%= button_to 'Attend', event_attendings_path(event_id: @event.id), method: :post %>
+<% if user_signed_in? %>
+  <%= button_to 'Attend', event_attendings_path(event_id: @event.id), method: :post %>
+<% end %>
