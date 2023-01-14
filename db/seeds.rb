@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Event.create(
+  [
+    {
+      location: 'Santa Clara',
+      date: Time.now + (7 * 24 * 3600)
+    },
+    {
+      location: 'Standford',
+      date: Time.now + (3 * 7 * 24 * 3600)
+    },
+    {
+      location: 'Cantor Art Center',
+      date: Time.now + (2 * 7 * 24 * 3600)
+    }
+  ]
+)
