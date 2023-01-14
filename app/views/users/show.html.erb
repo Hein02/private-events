@@ -12,7 +12,15 @@
 <h2><%= @user.username %> will be attending</h2>
 
 <ul>
-  <% @user.attended_events.each do |attended_event| %>
+  <% @user.attended_events.where('date > ?', Time.now).each do |attended_event| %>
+    <li><%= attended_event.location %></li>
+  <% end %>
+</ul>
+
+<h2><%= @user.username %> attended these events</h2>
+
+<ul>
+  <% @user.attended_events.where('date <= ?', Time.now).each do |attended_event| %>
     <li><%= attended_event.location %></li>
   <% end %>
 </ul>
