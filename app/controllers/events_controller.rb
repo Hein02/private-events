@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize_user, only: %i[edit update]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @events = Event.all
@@ -33,10 +33,10 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       flash[:success] = 'You have successfully updated an event.'
-      redirect_to @event
     else
-      render :new, status: :unprocessable_entity
+      flash[:error] = 'Oops, something went wrong.'
     end
+    redirect_to @event
   end
 
   def destroy
