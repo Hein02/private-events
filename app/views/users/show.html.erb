@@ -19,7 +19,10 @@
 
 <ul>
   <% @user.attended_events.where('date > ?', Time.now).each do |attended_event| %>
-    <li><%= link_to attended_event.location, attended_event %></li>
+    <li>
+      <%= link_to attended_event.location, attended_event %>
+      <%= button_to 'Cancel', event_attending_path(event_id: attended_event.id), method: :delete %>
+    </li>
   <% end %>
 </ul>
 
