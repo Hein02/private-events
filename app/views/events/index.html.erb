@@ -3,13 +3,13 @@
 <h2>Upcoming events</h2>
 <ul>
   <% @events.upcoming.each do |event| %>
-    <li><%= event.location %></li>
+    <li><%= link_to event.location, event %></li>
   <% end %>
 </ul>
 
 <h2>Past events</h2>
 <ul>
   <% @events.past.each do |event| %>
-    <li><%= event.location %></li>
+    <li><%= link_to event.location, event %></li>
   <% end %>
 </ul>

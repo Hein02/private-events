@@ -1,0 +1,13 @@
+.navbar {
+  background-color: aqua;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  flex-grow: 1;
+  justify-content: space-around;
+}

@@ -5,7 +5,7 @@
 
 <ul>
   <% @user.created_events.each do |created_event| %>
-    <li><%= created_event.location %></li>
+    <li><%= link_to created_event.location, created_event %></li>
   <% end %>
 </ul>
 
@@ -13,7 +13,7 @@
 
 <ul>
   <% @user.attended_events.where('date > ?', Time.now).each do |attended_event| %>
-    <li><%= attended_event.location %></li>
+    <li><%= link_to attended_event.location, attended_event %></li>
   <% end %>
 </ul>
 
@@ -21,7 +21,7 @@
 
 <ul>
   <% @user.attended_events.where('date <= ?', Time.now).each do |attended_event| %>
-    <li><%= attended_event.location %></li>
+    <li><%= link_to attended_event.location, attended_event %></li>
   <% end %>
 </ul>
 
