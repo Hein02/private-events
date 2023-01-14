@@ -10,15 +10,18 @@ Event.create(
   [
     {
       location: 'Santa Clara',
-      date: Time.now + (7 * 24 * 3600)
+      date: Time.now + (7 * 24 * 3600),
+      creator_id: 1
     },
     {
       location: 'Standford',
-      date: Time.now + (3 * 7 * 24 * 3600)
+      date: Time.now + (3 * 7 * 24 * 3600),
+      creator_id: 1
     },
     {
       location: 'Cantor Art Center',
-      date: Time.now + (2 * 7 * 24 * 3600)
+      date: Time.now + (2 * 7 * 24 * 3600),
+      creator_id: 1
     }
   ]
 )
