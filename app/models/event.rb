@@ -3,11 +3,6 @@ class Event < ApplicationRecord
   has_many :attendees, through: :event_attendings, source: :attendee
   belongs_to :creator, class_name: :User
 
-  def self.past
-    Event.where('date <= ?', Time.now)
-  end
-
-  def self.upcoming
-    Event.where('date > ?', Time.now)
-  end
+  scope :past, -> { where('date <= ?', Time.now) }
+  scope :upcoming, -> { where('date > ?', Time.now) }
 end
