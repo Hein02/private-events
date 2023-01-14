@@ -5,7 +5,12 @@
 
 <ul>
   <% @user.created_events.each do |created_event| %>
-    <li><%= link_to created_event.location, created_event %></li>
+    <li>
+      <%= link_to created_event.location, created_event %>
+      <% if @user.id == current_user.id %>
+        <%= button_to 'Edit', edit_event_path, method: :get %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
