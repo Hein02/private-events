@@ -1,5 +1,5 @@
 class EventAttendingsController < ApplicationController
-  before_action :require_login, only: %i[create]
+  before_action :require_login, :user_on_list, :user_owns_event, only: %i[create]
 
   def create
     event = Event.find(params[:event_id])
@@ -21,5 +21,21 @@ class EventAttendingsController < ApplicationController
 
     flash[:error] = 'You must be logged in to attend an event.'
     redirect_to new_user_session_path
+  end
+
+  def user_on_list
+    event = Event.find(params[:event_id])
+    return unless event.attendees.exists?(current_user.id)
+
+    flash[:error] = 'You are already on the list.'
+    redirect_to event
+  end
+
+  def user_owns_event
+    event = Event.find(params[:event_id])
+    return if event.creator_id != current_user.id
+
+    flash[:error] = 'You created this event.'
+    redirect_to event
   end
 end
